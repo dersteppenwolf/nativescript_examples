@@ -82,5 +82,5 @@ Run ios app on device :
 
 ## MBaaS
 
-
+- Telerik backend services http://www.telerik.com/platform/backend-services
 - Kinvey Releases NativeScript SDK to Enable the Best Full-Stack Native Mobile Development Experience https://www.kinvey.com/kinvey-nativescript-sdk/
