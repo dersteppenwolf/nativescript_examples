@@ -1,3 +1,3 @@
 module.exports = {
-    apiUrl: "https://api.everlive.com/v1/GWfRtXi1Lwt4jcqK/"
+    apiUrl: "https://proyectoprueba-1b0b3.firebaseio.com"
 };

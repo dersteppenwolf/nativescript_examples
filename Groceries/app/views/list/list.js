@@ -13,6 +13,8 @@ var pageData = new observableModule.fromObject({
 });
 
 exports.loaded = function(args) {
+    console.log("Ahora se carga esto jejejejeje");
+    
     page = args.object;
 
     if (page.ios) {
