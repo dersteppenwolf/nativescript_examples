@@ -1,0 +1,18 @@
+
+
+
+<!-- /app/main-page.xml -->
+ <Page
+	xmlns="http://www.nativescript.org/tns.xsd"
+	xmlns:maps="nativescript-google-maps-sdk"
+	>
+  <GridLayout rows="auto, *">
+    <Label row="0" text="{{ location, 'lat: ' + location.latitude + ', long: ' + location.longitude + ', alt: ' + location.altitude }}"/>
+    <maps:mapView latitude="{{ latitude }}" longitude="{{ longitude }}"
+    								zoom="{{ zoom }}" bearing="{{ bearing }}"
+    								tilt="{{ tilt }}" padding="{{ padding }}" mapReady="onMapReady"
+   								markerSelect="onMarkerSelect" markerBeginDragging="onMarkerBeginDragging"
+   								markerEndDragging="onMarkerEndDragging" markerDrag="onMarkerDrag"
+   								cameraChanged="onCameraChanged" />
+  </GridLayout>
+</Page>
