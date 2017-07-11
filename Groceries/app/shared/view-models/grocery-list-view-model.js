@@ -2,12 +2,10 @@ var config = require("../../shared/config");
 var firebase = require("nativescript-plugin-firebase");
 var ObservableArray = require("data/observable-array").ObservableArray;
 
-//to get the index of an item to be deleted and handle the deletion on the frontend
-
 function indexOf(item) {
     var match = -1;
     this.forEach(function (loopItem, index) {
-        if (loopItem.id === item.key) {
+        if (loopItem.id === item.id) {
             match = index;
         }
     });
@@ -15,7 +13,7 @@ function indexOf(item) {
 }
 
 function GroceryListViewModel(items) {
-    var viewModel = new observableArrayModule.ObservableArray(items);
+    var viewModel = new ObservableArray(items);
     viewModel.indexOf = indexOf;
 
     viewModel.load = function () {
@@ -65,7 +63,7 @@ function GroceryListViewModel(items) {
 
     viewModel.delete = function (index) {
         var id = viewModel.getItem(index).id;
-        return firebase.remove("/Groceries/" + id + "");
+        return firebase.remove("/Groceries/" + id);
     };
 
     return viewModel;
