@@ -13,6 +13,7 @@
     }
   },
   "dependencies": {
+    "email-validator": "^1.0.7",
     "nativescript-theme-core": "~1.0.4",
     "tns-core-modules": "~3.0.0"
   },
