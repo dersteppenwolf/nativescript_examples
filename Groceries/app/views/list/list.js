@@ -5,9 +5,7 @@ var ObservableArray = require("data/observable-array").ObservableArray;
 var socialShare = require("nativescript-social-share");
 
 var page;
-
 var groceryList = new GroceryListViewModel([]);
-
 var pageData = new observableModule.fromObject({
     groceryList: groceryList,
     grocery: ""
@@ -60,4 +58,10 @@ exports.share = function() {
     }
     var listString = list.join(", ").trim();
     socialShare.shareText(listString);
+};
+
+exports.delete = function(args) {
+    var item = args.view.bindingContext;
+    var index = groceryList.indexOf(item);
+    groceryList.delete(index);
 };
