@@ -5,6 +5,9 @@ npm-debug.log
 hooks/
 lib/
 node_modules/
-platforms/
+platforms/*
+!platforms/android
+platforms/android/*
+!platforms/android/google-services.json
 tmp/
 typings/

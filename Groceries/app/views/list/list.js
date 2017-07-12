@@ -75,6 +75,6 @@ exports.share = function() {
 
 exports.delete = function(args) {
     var item = args.view.bindingContext;
-    var index = groceryList.indexOf(item);
+    var index = groceryList.indexOf_local(item);
     groceryList.delete(index);
 };

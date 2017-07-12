@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "870441341425",
+    "firebase_url": "https://proyectoprueba-1b0b3.firebaseio.com",
+    "project_id": "proyectoprueba-1b0b3",
+    "storage_bucket": "proyectoprueba-1b0b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:870441341425:android:e5f4ff4997c21e6d",
+        "android_client_info": {
+          "package_name": "org.nativescript.Groceries"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "870441341425-pcih1kj0u8u0pkcu3cg7h0gmj9nqss3i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqDjZ7pfChkBaB42G-_KuCP-D28zPHhJI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
