@@ -20,13 +20,13 @@ En este proyecto se realiza la conexión con Firebase, sobre el proyecto de ejmp
 
 3.1 Seleccionar agregar otra app (en caso de que no se haya agregado antes aparecen android, ios y web) seleccionar android y se desplegará la ventana donde debe agregarse el nombre del paquete.
 
-![Captura](readme_images/captura1.png) 
+![img](http://imgur.com/FK0Igpa) 
 
  Del archivo package.json (de este directorio) extraer el nombre del paquete (se encuentra en nativescript.id)
 
 3.2 Agregar el nombre del paquete en la siguiente ventana
 
-![Captura2](readme_images/captura2.png)
+![img](http://imgur.com/yKyAeYE)
 
 Dar clic en 'REGISTRAR APP' con lo que se genera el archivo a ser descargado 'google-services.json'.
 
@@ -49,4 +49,4 @@ Y ponerla en el campo "apiUrl" del archivo /app/shared/config.js
 
 Nota: Los cambios en la base de datos se reflejan en tiempo real y se puden observar en el apartado DATABASE de la consola de adminsitración del proyecto en Firebase.
 
-![Captura3](readme_images/captura3.png)
+![img](http://imgur.com/Nz89OTh)
