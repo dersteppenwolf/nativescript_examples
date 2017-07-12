@@ -69,6 +69,7 @@ Y ponerla en el campo "apiUrl" del archivo /app/shared/config.js
 7. Correr nuevamente el comando, con lo que ahora debería desplegarse el APP.
 
 8. Se debe registrar el usuario "username@domain.com" con contraseña "password"; esto con el fin de poder usar los datos por defecto en la vista de login.
+Para registrar los usuarios con email / password se requiere activar la opción en firebase
 
 Nota: Los cambios en la base de datos se reflejan en tiempo real y se puden observar en el apartado DATABASE de la consola de adminsitración del proyecto en Firebase.
 
