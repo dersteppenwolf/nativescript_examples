@@ -57,6 +57,12 @@ Dar clic en 'REGISTRAR APP' con lo que se genera el archivo a ser descargado 'go
 ``` bash
 tns run android
 ```
+
+Ejecutar en otro dispositivo. (Ejm. 2 es el dispositivo físico)
+``` bash
+tns run android --device 2
+```
+
 Nota: Se debe contar con un emulador de android corriendo, sobre el cual se realizará la compilación.
       Saldrá un error debido a que no se cuenta con el archivo 'google-services.json'
 
