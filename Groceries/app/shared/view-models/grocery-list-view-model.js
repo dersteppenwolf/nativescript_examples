@@ -38,6 +38,19 @@ function GroceryListViewModel(items) {
                         qty: result.value.quantity,
                         id: result.key
                     });
+                    viewModel.sort(function (a, b) {
+                        var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+                        var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+                        if (nameA < nameB) {
+                            return -1;
+                        }
+                        if (nameA > nameB) {
+                            return 1;
+                        }
+
+                        // names must be equal
+                        return 0;
+                    });
                 }
             } else if (result.type === "ChildRemoved") {
                 matches.push(result);
@@ -67,7 +80,7 @@ function GroceryListViewModel(items) {
     };
 
     viewModel.refresh = function () {
-        var data = viewModel.splice(viewModel.length-1, 1);
+        var data = viewModel.splice(viewModel.length - 1, 1);
         viewModel.push(data);
     };
 
@@ -89,6 +102,11 @@ function GroceryListViewModel(items) {
         var id = viewModel.getItem(index).id;
         return firebase.remove("/Groceries/" + id);
     };
+
+    viewModel.logOut = function () {
+        viewModel.empty();
+        return firebase.logout();
+    }
 
     return viewModel;
 }

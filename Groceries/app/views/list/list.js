@@ -94,3 +94,9 @@ exports.goToSearch = function () {
     //topmost.navigate("views/register/search");
     console.log("Probando lanzamiento búsqueda");
 }
+
+exports.logOut = function () {
+    console.log(groceryList.logOut());
+    var topmost = frameModule.topmost();
+    topmost.navigate("views/login/login");
+}

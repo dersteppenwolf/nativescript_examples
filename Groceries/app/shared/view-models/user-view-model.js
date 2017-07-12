@@ -3,6 +3,9 @@ var firebase = require("nativescript-plugin-firebase");
 var observableModule = require("data/observable");
 var validator = require("email-validator");
 
+// Remover después
+var frameModule = require("ui/frame");
+
 function User(info) {
     info = info || {};
 
@@ -12,10 +15,18 @@ function User(info) {
         password: info.password || ""
     });
 
-    viewModel.init = function () {
+    viewModel.init = function (callback) {
         firebase.init({
             url: config.apiUrl,
-            persist: true
+            persist: true,
+            onAuthStateChanged: function (data) { // optional but useful to immediately re-logon the user when he re-visits your app
+                console.log(data.loggedIn ? "Logged in to firebase" : "Logged out from firebase");
+                if (data.loggedIn) {
+                    console.log("user's email address: " + (data.user.email ? data.user.email : "N/A"));
+                    config.uid = data.user.uid
+                    callback('active');
+                }
+            }
         }).then(
             function (instance) {
                 console.log("firebase.init done");
@@ -46,7 +57,7 @@ function User(info) {
             }
         }).then(
             function (response) {
-                config.uid = response.uid
+                config.uid = response.uid;
                 return response;
             });
     };

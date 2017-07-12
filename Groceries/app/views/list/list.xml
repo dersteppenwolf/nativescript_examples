@@ -8,13 +8,16 @@
                 <ActionItem tap="goToSearch" 
                 ios.systemIcon="9" ios.position="left" 
                 text="Buscar" android.position="popup"/>
+                <ActionItem tap="logOut" 
+                ios.position="left" 
+                text="Salir" android.position="popup"/>
             </ActionBar.actionItems>
         </ActionBar>
     </Page.actionBar>
     <GridLayout rows="auto, *" columns="2*, *, auto">
-        <TextField id="grocery" text="{{ grocery }}" hint="Enter a grocery item" row="0" col="0"/>
+        <TextField id="grocery" text="{{ grocery }}" hint="Ingresa un comestible" row="0" col="0"/>
         <TextField id="quantity" text="{{ quantity }}" hint="qty" row="0" col="1"/>        
-        <Button text="Add" tap="add" row="0" col="2"/>
+        <Button text="Agregar" tap="add" row="0" col="2"/>
         <ListView items="{{ groceryList }}" id="groceryList" row="1" colSpan="3">
             
 

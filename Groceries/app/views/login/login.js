@@ -18,9 +18,13 @@ exports.loaded = function (args) {
         navigationBar.barStyle = UIBarStyle.UIBarStyleBlack;
     }
 
-
     page.bindingContext = user;
-    user.init();
+    user.init(function(status){
+        if (status == 'active'){
+            var topmost = frameModule.topmost();
+            topmost.navigate("views/list/list");
+        }
+    });
 };
 
 exports.signIn = function () {
@@ -33,10 +37,6 @@ exports.signIn = function () {
             });
             return Promise.reject();
         })
-        .then(function () {
-            var topmost = frameModule.topmost();
-            topmost.navigate("views/list/list");
-        });
 };
 
 exports.register = function () {
