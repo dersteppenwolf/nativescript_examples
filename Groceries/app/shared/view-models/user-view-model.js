@@ -29,7 +29,7 @@ function User(info) {
             true      // set to false to disable this feature again
         ).then(
             function () {
-                console.log("firebase.keepInSync is ON for /users");
+                console.log("firebase.keepInSync is ON for /Groceries");
             },
             function (error) {
                 console.log("firebase.keepInSync error: " + error);

@@ -2,20 +2,27 @@
     <Page.actionBar>
         <ActionBar title="Groceries">
             <ActionBar.actionItems>
-                <ActionItem text="Share" tap="share" ios.position="right"/>
+                <ActionItem text = "Compartir" tap="share" 
+                ios.position="rigth"
+                android.systemIcon="ic_menu_share" android.position="actionBar"/>
+                <ActionItem tap="goToSearch" 
+                ios.systemIcon="9" ios.position="left" 
+                text="Buscar" android.position="popup"/>
             </ActionBar.actionItems>
         </ActionBar>
     </Page.actionBar>
-    <GridLayout rows="auto, *" columns="2*, *">
+    <GridLayout rows="auto, *" columns="2*, *, auto">
         <TextField id="grocery" text="{{ grocery }}" hint="Enter a grocery item" row="0" col="0"/>
-        <Button text="Add" tap="add" row="0" col="1"/>
-        <ListView items="{{ groceryList }}" id="groceryList" row="1" colSpan="2">
+        <TextField id="quantity" text="{{ quantity }}" hint="qty" row="0" col="1"/>        
+        <Button text="Add" tap="add" row="0" col="2"/>
+        <ListView items="{{ groceryList }}" id="groceryList" row="1" colSpan="3">
             
 
             <ListView.itemTemplate>
-                <GridLayout columns="*, auto">
+                <GridLayout columns="2*, *, auto">
                     <Label text="{{ name }}"/>
-                    <Image src="res://ic_menu_delete" ios:visibility="collapsed" col="1" tap="delete"/>
+                    <Label text= "{{ qty }}" col="1"/>
+                    <Image src="res://ic_menu_delete" ios:visibility="collapsed" col="2" tap="delete"/>
                 </GridLayout>
             </ListView.itemTemplate>
 

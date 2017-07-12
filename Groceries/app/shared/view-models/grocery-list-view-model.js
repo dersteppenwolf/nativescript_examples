@@ -34,7 +34,8 @@ function GroceryListViewModel(items) {
             if (result.type === "ChildAdded") {
                 if (result.value.UID === config.uid) {
                     viewModel.push({
-                        name: result.value.Name,
+                        name: result.value.name,
+                        qty: result.value.quantity,
                         id: result.key
                     });
                 }
@@ -43,7 +44,6 @@ function GroceryListViewModel(items) {
                 matches.forEach(function (match) {
                     var index = viewModel.indexOf_firebase(match);
                     viewModel.splice(index, 1);
-                    console.log("Se ha registrado borrado");
                 });
             } else if (result.type === "ChildChanged") {
                 matches.push(result);
@@ -77,9 +77,10 @@ function GroceryListViewModel(items) {
         }
     };
 
-    viewModel.add = function (grocery) {
+    viewModel.add = function (grocery, qty) {
         return firebase.push('/Groceries', {
-            'Name': grocery,
+            'name': grocery,
+            'quantity': qty,
             'UID': config.uid
         });
     };

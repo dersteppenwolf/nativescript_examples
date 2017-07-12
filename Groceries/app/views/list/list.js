@@ -1,4 +1,5 @@
 var dialogsModule = require("ui/dialogs");
+var frameModule = require("ui/frame");
 var GroceryListViewModel = require("../../shared/view-models/grocery-list-view-model");
 var observableModule = require("data/observable")
 var ObservableArray = require("data/observable-array").ObservableArray;
@@ -9,18 +10,19 @@ var page;
 var groceryList = new GroceryListViewModel([]);
 var pageData = new observableModule.fromObject({
     groceryList: groceryList,
-    grocery: ""
+    grocery: "",
+    quantity: ""
 });
 
 
 
-exports.loaded = function(args) {
+exports.loaded = function (args) {
 
     page = args.object;
 
     if (page.ios) {
         var listView = page.getViewById("groceryList");
-        swipeDelete.enable(listView, function(index) {
+        swipeDelete.enable(listView, function (index) {
             groceryList.delete(index);
         });
     }
@@ -31,7 +33,7 @@ exports.loaded = function(args) {
 
     groceryList.empty();
     pageData.set("isLoading", true);
-    groceryList.load().then(function() {
+    groceryList.load().then(function () {
         pageData.set("isLoading", false);
         listView.animate({
             opacity: 1,
@@ -40,11 +42,18 @@ exports.loaded = function(args) {
     });
 };
 
-exports.add = function() {
+exports.add = function () {
     // Check for empty submissions
     if (pageData.get("grocery").trim() === "") {
         dialogsModule.alert({
-            message: "Enter a grocery item",
+            message: "Ingrese un comestible",
+            okButtonText: "OK"
+        });
+        return;
+    }
+    if (pageData.get("quantity").trim() === "") {
+        dialogsModule.alert({
+            message: "Ingrese una cantidad",
             okButtonText: "OK"
         });
         return;
@@ -52,29 +61,36 @@ exports.add = function() {
 
     // Dismiss the keyboard
     page.getViewById("grocery").dismissSoftInput();
-    groceryList.add(pageData.get("grocery"))
-        .catch(function() {
+    groceryList.add(pageData.get("grocery"), pageData.get("quantity"))
+        .catch(function () {
             dialogsModule.alert({
-                message: "An error occurred while adding an item to your list.",
+                message: "Se presentó un error añadiendo el elemento",
                 okButtonText: "OK"
             });
         });
 
     // Empty the input field
     pageData.set("grocery", "");
+    pageData.set("quantity", "");
 };
 
-exports.share = function() {
+exports.share = function () {
     var list = [];
-    for (var i = 0, size = groceryList.length; i < size ; i++) {
-        list.push(groceryList.getItem(i).name);
+    for (var i = 0, size = groceryList.length; i < size; i++) {
+        list.push(groceryList.getItem(i).name + "(" + groceryList.getItem(i).qty + ")");
     }
     var listString = list.join(", ").trim();
     socialShare.shareText(listString);
 };
 
-exports.delete = function(args) {
+exports.delete = function (args) {
     var item = args.view.bindingContext;
     var index = groceryList.indexOf_local(item);
     groceryList.delete(index);
 };
+
+exports.goToSearch = function () {
+    var topmost = frameModule.topmost();
+    //topmost.navigate("views/register/search");
+    console.log("Probando lanzamiento búsqueda");
+}

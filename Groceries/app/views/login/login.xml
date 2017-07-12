@@ -1,15 +1,15 @@
 <Page loaded="loaded">
     <Page.actionBar>
-        <ActionBar title="Sign up"></ActionBar>
+        <ActionBar title="Ingreso"></ActionBar>
     </Page.actionBar>
     <StackLayout orientation="vertical">
         <Image src="res://logo" stretch="none" horizontalAlignment="center"/>
 
-        <TextField id="email" text="{{ email }}" hint="Email Address" keyboardType="email" autocorrect="false" autocapitalizationType="none"/>
-        <TextField secure="true" text="{{ password }}" hint="Password"/>
+        <TextField id="email" text="{{ email }}" hint="Email" keyboardType="email" autocorrect="false" autocapitalizationType="none"/>
+        <TextField secure="true" text="{{ password }}" hint="Contraseña"/>
 
-        <Button text="Sign in" tap="signIn"/>
-        <Button text="Sign up for Groceries" class="link" tap="register"/>
+        <Button text="Ingresar" tap="signIn"/>
+        <Button text="Registrarse" class="link" tap="register"/>
 
     </StackLayout>
 </Page>
