@@ -14,7 +14,8 @@ function User(info) {
 
     viewModel.init = function () {
         firebase.init({
-            url: config.apiUrl
+            url: config.apiUrl,
+            persist: true
         }).then(
             function (instance) {
                 console.log("firebase.init done");
@@ -23,33 +24,44 @@ function User(info) {
                 console.log("firebase.init error: " + error);
             }
             );
+        firebase.keepInSync(
+            '/Groceries', // which path in your Firebase needs to be kept in sync?
+            true      // set to false to disable this feature again
+        ).then(
+            function () {
+                console.log("firebase.keepInSync is ON for /users");
+            },
+            function (error) {
+                console.log("firebase.keepInSync error: " + error);
+            }
+            );
     };
 
-    viewModel.login = function() {
-    return firebase.login({
-        type: firebase.LoginType.PASSWORD,
-        passwordOptions : {
+    viewModel.login = function () {
+        return firebase.login({
+            type: firebase.LoginType.PASSWORD,
+            passwordOptions: {
+                email: viewModel.get("email"),
+                password: viewModel.get("password")
+            }
+        }).then(
+            function (response) {
+                config.uid = response.uid
+                return response;
+            });
+    };
+
+    viewModel.register = function () {
+        return firebase.createUser({
             email: viewModel.get("email"),
             password: viewModel.get("password")
-        }
-      }).then(
-        function (response) {
-            config.uid = response.uid
-            return response;
-        });
-};
-
-viewModel.register = function() {
-    return firebase.createUser({
-        email: viewModel.get("email"),
-        password: viewModel.get("password")
-      }).then(
-          function (response) {
-            console.log(response);
-            return response;
-          }
-      );
-};
+        }).then(
+            function (response) {
+                console.log(response);
+                return response;
+            }
+            );
+    };
 
     return viewModel;
 }
