@@ -1,5 +1,7 @@
 import { Component } from "@angular/core";
 
+import firebase = require("nativescript-plugin-firebase");
+
 @Component({
   selector: "my-app",
   template: `
@@ -23,5 +25,45 @@ export class AppComponent {
       type: "Apple",
       color: "Red"
     });
+
+    firebase.init({
+      // Optionally pass in properties for database, authentication and cloud messaging,
+      // see their respective docs.
+
+    }).then(
+      (instance) => {
+
+        console.log("firebase.init done");
+        firebase.setValue(
+            '/companies',
+            {
+              foo: 'bar',
+              updateTs: firebase.ServerValue.TIMESTAMP
+            }
+        );
+
+        firebase.push(
+            '/MyData',
+            {
+              'first': 'Eddy',
+              'last': 'Verbruggen',
+              'birthYear': 1977,
+              'isMale': true,
+              'address': {
+                'street': 'foostreet',
+                'number': 123
+              }
+            }
+        ).then(
+            function (result) {
+              console.log("created key:   " + result.key);
+            }
+        );
+
+      },
+      (error) => {
+        console.log("firebase.init error: " + error);
+      }
+    );
   }
 }

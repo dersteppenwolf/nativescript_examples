@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "57851603534",
+    "firebase_url": "https://test041-a5a8c.firebaseio.com",
+    "project_id": "test041-a5a8c",
+    "storage_bucket": "test041-a5a8c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57851603534:android:e5f4ff4997c21e6d",
+        "android_client_info": {
+          "package_name": "org.nativescript.Groceries"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "57851603534-q4odtsn6ldu3nrqvbncif07b7am4oo2h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwfbJ3fQ07zjO1l8Sv9_MKZODKq0-n4qQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57851603534:android:8083c42240e1b8ab",
+        "android_client_info": {
+          "package_name": "org.nativescript.HelloWorldAngular"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "57851603534-q4odtsn6ldu3nrqvbncif07b7am4oo2h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwfbJ3fQ07zjO1l8Sv9_MKZODKq0-n4qQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
