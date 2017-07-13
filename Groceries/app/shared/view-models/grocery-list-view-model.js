@@ -26,6 +26,9 @@ function GroceryListViewModel(items) {
     viewModel.indexOf_firebase = indexOf_firebase;
     viewModel.indexOf_local = indexOf_local;
 
+    var listeners = null;
+    var path = "";
+
     viewModel.load = function () {
 
         var onChildEvent = function (result) {
@@ -39,16 +42,14 @@ function GroceryListViewModel(items) {
                         id: result.key
                     });
                     viewModel.sort(function (a, b) {
-                        var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-                        var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+                        var nameA = a.name.toUpperCase();
+                        var nameB = b.name.toUpperCase();
                         if (nameA < nameB) {
                             return -1;
                         }
                         if (nameA > nameB) {
                             return 1;
                         }
-
-                        // names must be equal
                         return 0;
                     });
                 }
@@ -70,8 +71,10 @@ function GroceryListViewModel(items) {
         };
 
         return firebase.addChildEventListener(onChildEvent, "/Groceries").then(
-            function () {
+            function (listenerWrapper) {
                 console.log("firebase.addChildEventListener added");
+                path = listenerWrapper.path;
+                listeners = listenerWrapper.listeners;
             },
             function (error) {
                 console.log("firebase.addChildEventListener error: " + error);
@@ -104,10 +107,10 @@ function GroceryListViewModel(items) {
     };
 
     viewModel.logOut = function () {
-        viewModel.empty();
+        //viewModel.empty();
+        firebase.removeEventListeners(listeners, path);
         return firebase.logout();
     }
-
     return viewModel;
 }
 
