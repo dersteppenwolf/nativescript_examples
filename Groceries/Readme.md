@@ -80,3 +80,11 @@ Para registrar los usuarios con email / password se requiere activar la opción 
 Nota: Los cambios en la base de datos se reflejan en tiempo real y se puden observar en el apartado DATABASE de la consola de adminsitración del proyecto en Firebase.
 
 ![captura3](https://user-images.githubusercontent.com/12984253/28100385-4eec613c-6687-11e7-94e6-fc0872bca1fd.PNG)
+
+## Herramientas útiles para la implementación
+
+En el siguiente link, se encuentra la documentación del repositorio del plugin "nativescript-plugin-firebase", la cual es una buena guía para la implementación de la conexión.
+
+* https://github.com/EddyVerbruggen/nativescript-plugin-firebase/tree/master/docs
+
+Se pueden detacar los ficheros DATABASE.md y AUTHENTICATION.md
