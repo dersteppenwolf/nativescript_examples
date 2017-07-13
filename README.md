@@ -80,7 +80,10 @@ Run ios app on device :
 
 
 
-## MBaaS
+## Useful links
 
+- Cloud Functions Realtime Database Triggers Are Now More Efficient https://firebase.googleblog.com/2017/07/cloud-functions-realtime-database.html?m=1
+- Firebase: structure data https://firebase.google.com/docs/database/web/structure-data
+- Where does Firebase fit in your app? https://firebase.googleblog.com/2013/03/where-does-firebase-fit-in-your-app.html
 - Telerik backend services http://www.telerik.com/platform/backend-services
 - Kinvey Releases NativeScript SDK to Enable the Best Full-Stack Native Mobile Development Experience https://www.kinvey.com/kinvey-nativescript-sdk/
