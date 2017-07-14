@@ -97,6 +97,10 @@ exports.goToSearch = function () {
 
 exports.logOut = function () {
     console.log(groceryList.logOut());
+    var navigationEntry = {
+        moduleName: "views/login/login",
+        clearHistory: true
+    };
     var topmost = frameModule.topmost();
-    topmost.navigate("views/login/login");
+    topmost.navigate(navigationEntry);
 }

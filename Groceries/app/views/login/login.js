@@ -19,27 +19,38 @@ exports.loaded = function (args) {
     }
 
     page.bindingContext = user;
-    user.init(function(status){
-        if (status == 'active'){
-            var topmost = frameModule.topmost();
-            topmost.navigate("views/list/list");
-        }
+    user.init(function () {
+        checkGoToList();
     });
 };
 
 exports.signIn = function () {
-    user.login()
-        .catch(function (error) {
-            console.log(error);
-            dialogsModule.alert({
-                message: "Unfortunately we could not find your account.",
-                okButtonText: "OK"
+    console.log(user.checkLogged());
+    if (!user.checkLogged()) {
+        user.login()
+            .catch(function (error) {
+                console.log(error);
+                dialogsModule.alert({
+                    message: "Unfortunately we could not find your account.",
+                    okButtonText: "OK"
+                });
+                return Promise.reject();
             });
-            return Promise.reject();
-        })
+    }
 };
 
 exports.register = function () {
     var topmost = frameModule.topmost();
     topmost.navigate("views/register/register");
 };
+
+var checkGoToList = function () {
+    if (user.checkLogged()) {
+        var navigationEntry = {
+            moduleName: "views/list/list",
+            clearHistory: true
+        };
+        var topmost = frameModule.topmost();
+        topmost.navigate(navigationEntry);
+    }
+}

@@ -8,6 +8,7 @@ var frameModule = require("ui/frame");
 
 function User(info) {
     info = info || {};
+    var logged = false;
 
     // You can add properties to observables on creation
     var viewModel = new observableModule.fromObject({
@@ -23,9 +24,14 @@ function User(info) {
                 console.log(data.loggedIn ? "Logged in to firebase" : "Logged out from firebase");
                 if (data.loggedIn) {
                     console.log("user's email address: " + (data.user.email ? data.user.email : "N/A"));
-                    config.uid = data.user.uid
-                    callback('active');
+                    config.uid = data.user.uid;
+                    logged = true;
                 }
+                else {
+                    logged = false;
+                }
+                // Notificación de ejecución
+                callback();
             }
         }).then(
             function (instance) {
@@ -46,6 +52,7 @@ function User(info) {
                 console.log("firebase.keepInSync error: " + error);
             }
             );
+        callback();
     };
 
     viewModel.login = function () {
@@ -73,6 +80,10 @@ function User(info) {
             }
             );
     };
+
+    viewModel.checkLogged = function () {
+        return logged;
+    }
 
     return viewModel;
 }
